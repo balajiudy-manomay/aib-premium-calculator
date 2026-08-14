@@ -1,0 +1,469 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* Company official theme variables */
+  --e-global-color-primary: #1B1B1B;
+  --e-global-color-secondary: #54595F;
+  --e-global-color-text: #7A7A7A;
+  --e-global-color-accent: #61CE70;
+  --e-global-color-kadence1: #2B6CB0;
+  --e-global-color-kadence2: #215387;
+  --e-global-color-kadence3: #1A202C;
+  --e-global-color-kadence4: #2D3748;
+  --e-global-color-kadence5: #4A5568;
+  --e-global-color-kadence6: #718096;
+  --e-global-color-kadence7: #EDF2F7;
+  --e-global-color-kadence8: #F7FAFC;
+  --e-global-color-kadence9: #ffffff;
+  --e-global-color-2a285f4: #F3F3F3;
+  --e-global-color-528548e: #FFFFFF;
+  --e-global-color-3bce1fa: #2A275C;
+  --e-global-color-7a281ae: #425A9E;
+  --e-global-color-93bc1cb: #0F1DAF;
+
+  --global-palette1: #2B6CB0;
+  --global-palette2: #215387;
+  --global-palette3: #1A202C;
+  --global-palette4: #2D3748;
+  --global-palette5: #4A5568;
+  --global-palette6: #718096;
+  --global-palette7: #EDF2F7;
+  --global-palette8: #F7FAFC;
+  --global-palette9: #ffffff;
+  --global-palette10: #E2E8F0;
+  --global-palette11: #13612e;
+  --global-palette12: #1159af;
+  --global-palette13: #b82105;
+  --global-palette14: #f7630c;
+  --global-palette15: #f5a524;
+  --global-palette9rgb: 255, 255, 255;
+
+  --global-palette-highlight: var(--global-palette1);
+  --global-palette-highlight-alt: #2a275c;
+  --global-palette-highlight-alt2: var(--global-palette9);
+
+  --global-palette-btn-bg: var(--global-palette1);
+  --global-palette-btn-bg-hover: var(--global-palette2);
+  --global-palette-btn: var(--global-palette9);
+  --global-palette-btn-hover: var(--global-palette9);
+  --global-palette-btn-sec-bg: var(--global-palette7);
+  --global-palette-btn-sec-bg-hover: var(--global-palette2);
+  --global-palette-btn-sec: var(--global-palette3);
+  --global-palette-btn-sec-hover: var(--global-palette9);
+
+  --global-body-font-family: 'Plus Jakarta Sans', sans-serif;
+  --global-heading-font-family: inherit;
+  --global-primary-nav-font-family: inherit;
+  --global-fallback-font: sans-serif;
+  --global-display-fallback-font: sans-serif;
+
+  --global-content-width: 1320px;
+  --global-content-wide-width: calc(1320px + 230px);
+  --global-content-narrow-width: 842px;
+  --global-content-edge-padding: 1.5rem;
+  --global-content-boxed-padding: 2rem;
+  --global-calc-content-width: calc(1320px - var(--global-content-edge-padding) - var(--global-content-edge-padding));
+  --wp--style--global--content-size: var(--global-calc-content-width);
+
+  --global-gray-400: #CBD5E0;
+  --global-gray-500: #A0AEC0;
+
+  --global-xs-spacing: 1em;
+  --global-sm-spacing: 1.5rem;
+  --global-md-spacing: 2rem;
+  --global-lg-spacing: 2.5em;
+  --global-xl-spacing: 3.5em;
+  --global-xxl-spacing: 5rem;
+  --global-edge-spacing: 1.5rem;
+  --global-boxed-spacing: 2rem;
+
+  --global-font-size-small: clamp(0.8rem, 0.73rem + 0.217vw, 0.9rem);
+  --global-font-size-medium: clamp(1.1rem, 0.995rem + 0.326vw, 1.25rem);
+  --global-font-size-large: clamp(1.75rem, 1.576rem + 0.543vw, 2rem);
+  --global-font-size-larger: clamp(2rem, 1.6rem + 1vw, 2.5rem);
+  --global-font-size-xxlarge: clamp(2.25rem, 1.728rem + 1.63vw, 3rem);
+
+  /* Override background and foreground with corporate palette */
+  /* F7FAFC */
+  /* 1B1B1B */
+  --background: #ffffff;
+  --foreground: #020817;
+  --card: #ffffff;
+  --card-foreground: #020817;
+  --popover: #ffffff;
+  --popover-foreground: #020817;
+  --primary: #0f172a;
+  --primary-foreground: #f8fafc;
+  --secondary: #f1f5f9;
+  --secondary-foreground: #0f172a;
+  --muted: #f1f5f9;
+  --muted-foreground: #64748b;
+  --accent: #f1f5f9;
+  --accent-foreground: #0f172a;
+  --destructive: #ef4444;
+  --border: #e2e8f0;
+  --input: #e2e8f0;
+  --ring: #94a3b8;
+  --chart-1: #e11d48;
+  --chart-2: #2563eb;
+  --chart-3: #10b981;
+  --chart-4: #f59e0b;
+  --chart-5: #f97316;
+  --radius: 0.625rem;
+  --sidebar: #f8fafc;
+  --sidebar-foreground: #020817;
+  --sidebar-primary: #0f172a;
+  --sidebar-primary-foreground: #f8fafc;
+  --sidebar-accent: #f1f5f9;
+  --sidebar-accent-foreground: #0f172a;
+  --sidebar-border: #e2e8f0;
+  --sidebar-ring: #94a3b8;
+}
+
+@theme {
+  /* Brand Identity - Mapped to corporate colors */
+  --color-brand-indigo: var(--e-global-color-3bce1fa);
+  /* #2A275C - Allied Deep Purple/Blue */
+  --color-brand-blue: var(--global-palette1);
+  /* #2B6CB0 - Primary Blue */
+  --color-brand-charcoal: var(--e-global-color-primary);
+  /* #1B1B1B - Main Dark Text */
+
+  /* Accent & States */
+  --color-brand-ultra: var(--global-palette2);
+  /* #215387 - Darker Blue for hover */
+  --color-brand-cobalt: var(--e-global-color-7a281ae);
+  /* #425A9E - Slate Blue */
+  --color-brand-slate: var(--e-global-color-secondary);
+  /* #54595F - Secondary Slate */
+
+  /* Semantic & Support */
+  --color-brand-success: var(--global-palette11);
+  /* #13612e - Deep Success Green */
+  --color-brand-royal: var(--global-palette12);
+  /* #1159af - Alternative Blue */
+  --color-brand-slate-light: var(--global-palette6);
+  /* #718096 - Light Gray */
+
+  /* Backgrounds */
+  --color-brand-light: var(--global-palette7);
+  /* #EDF2F7 */
+  --color-brand-ghost: var(--global-palette8);
+  /* #F7FAFC */
+  --color-brand-dark: var(--global-palette3);
+  /* #1A202C */
+
+  /* Typography Override */
+  --font-sans: var(--font-plus-jakarta-sans), Inter, system-ui, -apple-system, sans-serif;
+  --font-mono: var(--font-geist-mono);
+
+  /* Hex Fallbacks for html2canvas (Tailwind v4 defaults to oklch/oklab which crashes html2canvas) */
+  --color-white: #ffffff;
+  --color-black: #000000;
+  --color-transparent: transparent;
+
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+  --shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+
+  --color-slate-50: #f8fafc;
+  --color-slate-100: #f1f5f9;
+  --color-slate-200: #e2e8f0;
+  --color-slate-300: #cbd5e1;
+  --color-slate-400: #94a3b8;
+  --color-slate-500: #64748b;
+  --color-slate-600: #475569;
+  --color-slate-650: #3b4b62;
+  --color-slate-700: #334155;
+  --color-slate-800: #1e293b;
+  --color-slate-850: #172033;
+  --color-slate-900: #0f172a;
+  --color-slate-950: #020617;
+
+  --color-emerald-50: #ecfdf5;
+  --color-emerald-100: #d1fae5;
+  --color-emerald-150: #bbf7d0;
+  --color-emerald-200: #a7f3d0;
+  --color-emerald-500: #10b981;
+  --color-emerald-600: #059669;
+  --color-emerald-700: #047857;
+  --color-emerald-800: #065f46;
+  --color-emerald-900: #064e3b;
+
+  --color-green-50: #f0fdf4;
+  --color-green-100: #dcfce7;
+  --color-green-500: #22c55e;
+  --color-green-600: #16a34a;
+
+  --color-red-50: #fef2f2;
+  --color-red-100: #fee2e2;
+  --color-red-200: #fecaca;
+  --color-red-500: #ef4444;
+  --color-red-600: #dc2626;
+  --color-red-700: #b91c1c;
+  --color-red-950: #450a0a;
+
+  --color-sky-50: #f0f9ff;
+  --color-sky-100: #e0f2fe;
+  --color-sky-500: #0ea5e9;
+
+  --color-blue-600: #2563eb;
+  --color-blue-800: #1e40af;
+  --color-blue-900: #1e3a8a;
+
+  --color-amber-600: #d97706;
+  --color-teal-700: #0f766e;
+  --color-indigo-900: #312e81;
+  --color-orange-550: #ea580c;
+  --color-red-650: #c51b1b;
+  --color-red-800: #991b1b;
+  --color-slate-350: #b4c2d4;
+}
+
+body {
+  background-color: var(--background);
+  font-family: var(--font-sans);
+  min-height: 100vh;
+  margin: 0;
+}
+
+/* Sub-animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Custom premium overrides for react-day-picker v10 */
+.rdp-root {
+  font-family: var(--global-body-font-family);
+  --rdp-accent-color: var(--color-brand-blue);
+  --rdp-accent-color-dark: var(--color-brand-indigo);
+  --rdp-selected-color: #ffffff;
+}
+
+.rdp-day_selected,
+.rdp-selected .rdp-day_button {
+  background-color: var(--color-brand-blue) !important;
+  color: #ffffff !important;
+  font-weight: bold;
+  border-radius: 8px;
+}
+
+.rdp-day_button {
+  border-radius: 8px !important;
+  transition: all 0.2s ease-in-out;
+}
+
+.rdp-day_button:hover {
+  background-color: color-mix(in srgb, var(--color-brand-blue) 10%, transparent) !important;
+  color: var(--color-brand-indigo) !important;
+}
+
+.rdp-selected .rdp-day_button:hover {
+  background-color: var(--color-brand-blue) !important;
+  color: #ffffff !important;
+}
+
+.rdp-chevron {
+  fill: var(--color-brand-indigo);
+}
+
+.rdp-dropdowns {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.rdp-dropdown {
+  border: 1px solid var(--global-gray-400);
+  border-radius: 6px;
+  padding: 0.125rem 0.25rem;
+  background-color: white;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--color-brand-indigo);
+  outline: none;
+  cursor: pointer;
+}
+
+.rdp-dropdown:focus {
+  border-color: var(--color-brand-blue);
+}
+
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 10mm;
+  }
+
+  body {
+    background-color: white !important;
+    color: black !important;
+    font-size: 10px !important; /* Scale down typography for print */
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    zoom: 0.90; /* Further shrink entire output to guarantee single page fit */
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  main,
+  section,
+  div,
+  tbody,
+  tr,
+  td,
+  th {
+    box-shadow: none !important;
+    border-radius: 0 !important;
+  }
+
+  td {
+    padding: 24px;
+  }
+
+  td,
+  th {
+    padding: 6px 8px;
+  }
+ .calculator-column-print {
+    display: none;
+  }
+  main {
+    margin: 0 !important;
+    padding: 0 !important;
+    max-width: 100% !important;
+    width: 100% !important;
+  }
+
+  section {
+    border: none !important;
+    padding: 0 !important;
+    margin-bottom: 0.75rem !important; /* Compressed for print */
+  }
+
+  /* Compress Tailwind spacing utilities in print */
+  .space-y-8 > :not([hidden]) ~ :not([hidden]),
+  .space-y-6 > :not([hidden]) ~ :not([hidden]),
+  .space-y-4 > :not([hidden]) ~ :not([hidden]) {
+    margin-top: 0.5rem !important;
+  }
+
+  header,
+  footer,
+  button {
+    display: none !important;
+  }
+
+  .customer-info-print {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 8px 24px !important;
+  }
+}
+
+@theme inline {
+  --font-heading: var(--font-sans);
+  --font-sans: var(--font-sans);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --color-foreground: var(--foreground);
+  --color-background: var(--background);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+.dark {
+  --background: #020817;
+  --foreground: #f8fafc;
+  --card: #020817;
+  --card-foreground: #f8fafc;
+  --popover: #020817;
+  --popover-foreground: #f8fafc;
+  --primary: #f8fafc;
+  --primary-foreground: #020817;
+  --secondary: #1e293b;
+  --secondary-foreground: #f8fafc;
+  --muted: #1e293b;
+  --muted-foreground: #94a3b8;
+  --accent: #1e293b;
+  --accent-foreground: #f8fafc;
+  --destructive: #7f1d1d;
+  --border: rgba(255, 255, 255, 0.1);
+  --input: rgba(255, 255, 255, 0.15);
+  --ring: #64748b;
+  --chart-1: #e11d48;
+  --chart-2: #2563eb;
+  --chart-3: #10b981;
+  --chart-4: #f59e0b;
+  --chart-5: #f97316;
+  --sidebar: #020817;
+  --sidebar-foreground: #f8fafc;
+  --sidebar-primary: #3b82f6;
+  --sidebar-primary-foreground: #f8fafc;
+  --sidebar-accent: #1e293b;
+  --sidebar-accent-foreground: #f8fafc;
+  --sidebar-border: rgba(255, 255, 255, 0.1);
+  --sidebar-ring: #64748b;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  html {
+    @apply font-sans;
+  }
+}
