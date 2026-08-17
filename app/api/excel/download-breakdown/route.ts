@@ -81,13 +81,14 @@ export async function POST(req: NextRequest) {
 
     // Helper to format percentage values safely
     const formatPercentValue = (val: any) => {
-      if (val === undefined || val === null) return "0%";
-      const num = Number(val);
-      if (num === 0) return "0%";
-      if (Math.abs(num) < 1.0) {
-        return `${(num * 100).toFixed(0)}%`;
-      }
-      return `${num.toFixed(0)}%`;
+      if (val === undefined || val === null || val === "") return "0%";
+      const cleanVal = typeof val === 'string' ? val.replace('%', '').trim() : val;
+      const num = Number(cleanVal);
+      if (isNaN(num) || num === 0) return "0%";
+      const absNum = Math.abs(num);
+      const pct = absNum < 1.0 ? absNum * 100 : absNum;
+      const formatted = Number(pct.toFixed(4));
+      return `${formatted}%`;
     };
 
     // Helper to draw headers

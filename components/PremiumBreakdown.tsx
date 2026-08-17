@@ -154,13 +154,14 @@ export default function PremiumBreakdown({
 
   const formatPercent = (val: any) => {
     if (val === undefined || val === null || val === "") return "0%";
-    const num = Number(val);
+    const cleanVal = typeof val === 'string' ? val.replace('%', '').trim() : val;
+    const num = Number(cleanVal);
     if (isNaN(num)) return "-";
     if (num === 0) return "0%";
-    if (Math.abs(num) < 1.0) {
-      return `${(num * 100).toFixed(0)}%`;
-    }
-    return `${num.toFixed(0)}%`;
+    const absNum = Math.abs(num);
+    const pct = absNum < 1.0 ? absNum * 100 : absNum;
+    const formatted = Number(pct.toFixed(4));
+    return `${formatted}%`;
   };
 
   const formatCurrency = (val: any) => {
@@ -292,12 +293,12 @@ export default function PremiumBreakdown({
         },
         loadings: activeLoadings.map(f => ({
           label: f.label,
-          value: breakdown[f.key]
+          value: isNaN(Number(breakdown[f.key])) ? "-" : `+${formatPercent(breakdown[f.key])}`
         })),
         premiumAfterLoading: breakdown?.premiumAfterLoading,
         discounts: activeDiscounts.map(f => ({
           label: f.label,
-          value: breakdown[f.key]
+          value: isNaN(Number(breakdown[f.key])) ? "-" : `-${formatPercent(breakdown[f.key])}`
         })),
         premiumAfterDiscounts: breakdown?.premiumAfterDiscounts,
         premiumAfterMinimumPremium: breakdown?.premiumAfterMinimumPremium,
@@ -357,12 +358,12 @@ export default function PremiumBreakdown({
         },
         loadings: activeLoadings.map(f => ({
           label: f.label,
-          value: breakdown[f.key]
+          value: isNaN(Number(breakdown[f.key])) ? "-" : `+${formatPercent(breakdown[f.key])}`
         })),
         premiumAfterLoading: breakdown?.premiumAfterLoading,
         discounts: activeDiscounts.map(f => ({
           label: f.label,
-          value: breakdown[f.key]
+          value: isNaN(Number(breakdown[f.key])) ? "-" : `-${formatPercent(breakdown[f.key])}`
         })),
         premiumAfterDiscounts: breakdown?.premiumAfterDiscounts,
         premiumAfterMinimumPremium: breakdown?.premiumAfterMinimumPremium,
