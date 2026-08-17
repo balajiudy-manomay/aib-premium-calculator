@@ -33,6 +33,27 @@ interface PremiumBreakdownProps {
 
 
 const LOADING_FIELDS = [
+  { key: 'vehicleAgeLoading', label: 'Vehicle Age Loading' },
+  { key: 'licenceAgeLoading', label: 'Licence Age Loading' },
+  { key: 'ageLoading', label: 'Age Loading' },
+  { key: 'claimsLoad', label: 'Claims Load' },
+  { key: 'theftCoverLoad', label: 'Theft Cover Load' },
+  { key: 'occupationLoading', label: 'Occupation Loading' },
+  { key: 'ccLoad', label: 'Engine CC Load' },
+  { key: 'maleLoading', label: 'Male Driver Loading' },
+  { key: 'claimFreeYearsMaleDrivers', label: 'Claim Free Years & Male Drivers' },
+  { key: 'companyOwnedVehicleLoadings', label: 'Company Owned Vehicle Loadings' },
+  { key: 'openPolicyLoading', label: 'Open Policy Loading' },
+  { key: 'insuredAndDrivers', label: 'Insured & Drivers Loading' },
+  { key: 'multipleConditions', label: 'Multiple Conditions Loading' },
+  { key: 'group1Sprv', label: 'Group 1 Specially Rated Vehicles' },
+  { key: 'group2Sprv', label: 'Group 2 Specially Rated Vehicles' },
+  { key: 'speciallyRatedVehiclesLoad', label: 'Specially Rated Vehicles Load' },
+  { key: 'vehicleLoad', label: 'Vehicle Load' },
+  { key: 'speciallyRatedVehiclesMotorcycleLoad', label: 'Specially Rated Vehicles (Motorcycle) Load' },
+  { key: 'makeLoad', label: 'Vehicle Make Load' },
+  { key: 'makeModelLoad', label: 'Vehicle Make & Model Load' },
+  { key: 'highPerformanceVehicleLoad', label: 'High Performance Vehicle Load' },
   { key: 'manualLoad', label: 'Manual Load' },
   { key: 'vehicleTheftLoad', label: 'Vehicle Theft Load' },
 ];
@@ -475,23 +496,23 @@ export default function PremiumBreakdown({
                 <h4 className="text-sm font-black text-slate-800 tracking-wide">Loadings</h4>
               </div>
 
-              <div className="text-xs sm:text-sm font-semibold text-slate-650 py-1 space-y-2">
-                {activeLoadings.length > 0 ? (
-                  activeLoadings.map(field => (
+              {activeLoadings.length > 0 ? (
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-4 text-xs sm:text-sm font-semibold text-slate-650 py-1">
+                  {activeLoadings.map(field => (
                     <div key={field.key} className="flex justify-between items-center">
                       <span>{field.label}</span>
-                      <span className="font-extrabold text-slate-800">
+                      <span className="font-extrabold text-red-600">
                         {isNaN(Number(breakdown[field.key])) ? "-" : `+${formatPercent(breakdown[field.key])}`}
                       </span>
                     </div>
-                  ))
-                ) : (
-                  <div className="flex justify-between items-center text-slate-400 italic">
-                    <span>No Loadings Applied</span>
-                    <span>0%</span>
-                  </div>
-                )}
-              </div>
+                  ))}
+                </div>
+              ) : (
+                <div className="flex justify-between items-center py-1 text-slate-400 italic text-xs sm:text-sm font-semibold">
+                  <span>No Loadings Applied</span>
+                  <span>0%</span>
+                </div>
+              )}
 
               <div className="bg-[#F1F5F9] rounded-xl px-5 py-4 flex justify-between items-center text-slate-650 font-bold text-xs uppercase tracking-wide">
                 <span>PREMIUM AFTER LOADING</span>
