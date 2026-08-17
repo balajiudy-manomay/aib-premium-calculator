@@ -215,7 +215,7 @@ export async function getVehicles(): Promise<string[]> {
   // We can just fetch a large range or used range of column R. 
   // Let's assume up to R1000 is enough, or use usedRange if needed.
   // Using a fixed range like R3:R5000 is fast enough and simple.
-  const response = await client.api(`${await getWorkbookPath()}/worksheets('Reference Sheet')/range(address='R3:R5000')`).get();
+  const response = await client.api(`${await getWorkbookPath()}/worksheets('Reference Sheet')/range(address='R3:R30000')`).get();
   
   const vehicles: string[] = [];
   if (response && response.values) {
