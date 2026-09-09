@@ -49,7 +49,7 @@ export const INSURANCE_PRODUCTS = [
   'The Luxe',
   'Third Party-Private Car',
   'Ultimate Women',
-  'Commercial vehicle'
+  'Commercial vehicle',
 ];
 
 export const PREVIOUS_CARRIERS = [
@@ -183,6 +183,10 @@ export function getCoverTypeOptions(insuranceProduct: string): string[] {
       return ['Comprehensive'];
     case 'Third Party-Private Car':
       return ['Third Party'];
+    case 'Mini Max':
+      return [
+        'Comprehensive'
+      ];
     default:
       return []; // Or all options if needed, but empty seems safer
   }
