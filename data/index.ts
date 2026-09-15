@@ -49,6 +49,7 @@ export const INSURANCE_PRODUCTS = [
   'The Luxe',
   'Third Party-Private Car',
   'Ultimate Women',
+  'Young and Inexperienced',
   'Commercial vehicle',
 ];
 
@@ -153,6 +154,11 @@ export function getCoverTypeOptions(insuranceProduct: string): string[] {
         'Classic Third Party',
         'Easy Third Party',
         'Value Shield'
+      ];
+    case 'Young and Inexperienced':
+      return [
+        'Comprehensive',
+        'Third Party'
       ];
     case 'Motorcycle':
     case 'Road Angel':
