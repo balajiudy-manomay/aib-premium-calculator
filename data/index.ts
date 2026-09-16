@@ -153,7 +153,8 @@ export function getCoverTypeOptions(insuranceProduct: string): string[] {
         'Supreme Third Party',
         'Classic Third Party',
         'Easy Third Party',
-        'Value Shield'
+        'Value Shield',
+        'Value Shield+'
       ];
     case 'Young and Inexperienced':
       return [
