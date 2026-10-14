@@ -60,7 +60,7 @@ export const PREVIOUS_CARRIERS = [
   'JN General Insurance',
   'Guardian General Insurance',
   'British Caribbean Insurance Company',
-  'Advantage General',
+  'Sagicor General Insurance',
   'Key Insurance',
   'AutoSmart',
   'General Accident',
